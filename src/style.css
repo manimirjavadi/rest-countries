@@ -1,7 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+* {
+    @apply font-sans
+}
+
 body {
     @apply bg-lightBg text-lightText dark:bg-darkBg dark:text-darkText;
+}
+
+.title {
+    @apply font-semibold text-[28px];
 }
