@@ -4,13 +4,14 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      backgroundColor: {
-        dark: "#1a202c",
-        "dark-light": "#2d3748",
-      },
-      textColor: {
-        dark: "#fff",
-        "dark-light": "#cbd5e0",
+      colors: {
+        darkBg: "#202c37",
+        darkElement: "#2B3945",
+        darkText: "#fff",
+        lightBg: "#fafafa",
+        ligtElement: "#fff",
+        lightInput: "#858585",
+        lightText: "#111517",
       },
     },
   },
