@@ -4,13 +4,17 @@
 @tailwind utilities;
 
 * {
-    @apply font-sans
+    @apply font-sans;
 }
 
 body {
-    @apply bg-lightBg text-lightText dark:bg-darkBg dark:text-darkText;
+    @apply bg-lightBg text-lightText dark:bg-darkBg dark:text-darkText transition-colors duration-300 ease-in-out;
 }
 
 .title {
-    @apply font-semibold text-[28px];
+    @apply font-bold text-[28px];
+}
+
+.rp {
+    @apply px-4 md:px-8;
 }
