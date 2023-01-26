@@ -43,5 +43,22 @@ export const useCountries = defineStore("countries", {
           loadingHandler.stopLoading();
         });
     },
+
+    searchByName(name: String) {
+      const loadingHandler = useLoading();
+      const alert = useAlert();
+
+      loadingHandler.startLoading();
+      search
+        .search(name)
+        .then((res) => {
+          this.countries = res;
+          loadingHandler.stopLoading();
+        })
+        .catch((e) => {
+          alert.throwAlert("error", e.response.data.message);
+          loadingHandler.stopLoading();
+        });
+    },
   },
 });

@@ -18,12 +18,20 @@ const filterRegion = async (region: string) => {
     await countriesHandler.fetchCountries();
   }
 };
+
+const searchCountry = async (name: string) => {
+  if (name.length) {
+    await countriesHandler.searchByName(name);
+  } else {
+    await countriesHandler.fetchCountries();
+  }
+};
 </script>
 
 <template>
   <main class="mainContainer rp">
     <div class="headerContainer">
-      <CRInput />
+      <CRInput @submit-search="searchCountry" />
       <CRDropdown @region-changed="filterRegion" />
     </div>
 

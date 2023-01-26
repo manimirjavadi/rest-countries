@@ -4,6 +4,19 @@ import { mdiMagnify as searchIcon, mdiWindowClose as close } from "@mdi/js";
 import { ref } from "vue";
 
 const searchText = ref("");
+
+const emit = defineEmits<{
+  (e: "submitSearch", id: string): void;
+}>();
+
+const submit = () => {
+  emit("submitSearch", searchText.value);
+};
+
+const clear = () => {
+  searchText.value = "";
+  emit("submitSearch", "");
+};
 </script>
 
 <template>
@@ -12,11 +25,12 @@ const searchText = ref("");
       v-model="searchText"
       class="cr_input"
       placeholder="Search for a country..."
+      @keydown.enter="submit"
     />
     <div class="iconContainer" v-if="!searchText.length">
       <SvgIcon type="mdi" :path="searchIcon"></SvgIcon>
     </div>
-    <div class="iconContainer" v-else @click="() => (searchText = '')">
+    <div class="iconContainer" v-else @click="clear">
       <SvgIcon type="mdi" :path="close"></SvgIcon>
     </div>
   </div>
