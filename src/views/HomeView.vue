@@ -10,13 +10,21 @@ const countriesHandler = useCountries();
 onMounted(async () => {
   await countriesHandler.fetchCountries();
 });
+
+const filterRegion = async (region: string) => {
+  if (region !== "All") {
+    await countriesHandler.filterByRegion(region);
+  } else {
+    await countriesHandler.fetchCountries();
+  }
+};
 </script>
 
 <template>
   <main class="mainContainer rp">
     <div class="headerContainer">
       <CRInput />
-      <CRDropdown />
+      <CRDropdown @region-changed="filterRegion" />
     </div>
 
     <div class="countriesList">
