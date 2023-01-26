@@ -26,3 +26,21 @@ body {
 .cr_input {
   @apply h-[40px] bg-lightBg text-lightText dark:bg-darkElement dark:text-darkText whitespace-nowrap px-4 shadow-3xl rounded-sm;
 }
+
+/* Animation dropdown */
+.dropdown-enter-active,
+.dropdown-leave-active {
+  transition: all 0.3s ease;
+}
+.dropdown-enter {
+  transform: translateY(-10px);
+  opacity: 0;
+}
+.dropdown-enter-to {
+  transform: translateY(0);
+  opacity: 1;
+}
+.dropdown-leave-to {
+  transform: translateY(-10px);
+  opacity: 0;
+}
