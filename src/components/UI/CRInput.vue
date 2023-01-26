@@ -24,7 +24,11 @@ const searchText = ref("");
 
 <style scoped>
 input {
-  @apply w-[230px] md:w-[450px] shadow-3xl text-sm pl-12;
+  @apply w-full md:w-[450px] shadow-3xl text-sm pl-12;
+}
+
+input:focus {
+  @apply outline-none dark:bg-darkElement/50 bg-slate-100;
 }
 
 .iconContainer {
