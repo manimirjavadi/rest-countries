@@ -8,7 +8,7 @@ defineProps<{
   population?: number;
   region?: string;
   capital?: string;
-  cioc?: string;
+  alpha3Code?: string;
 }>();
 
 const squareFlags = ref(["Switzerland", "Nepal"]);
@@ -16,7 +16,7 @@ const router = useRouter();
 </script>
 
 <template>
-  <div class="card" @click="() => router.push(`/${name}/${cioc}`)">
+  <div class="card" @click="() => router.push(`/${name}/${alpha3Code}`)">
     <div class="image">
       <img
         v-if="name"

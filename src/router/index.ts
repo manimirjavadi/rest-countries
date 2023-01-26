@@ -14,7 +14,7 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: "/:name/:cioc",
+      path: "/:name/:alpha3Code",
       name: "country",
       component: CountryDetails,
     },

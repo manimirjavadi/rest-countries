@@ -72,11 +72,11 @@ export const useCountries = defineStore("countries", {
         });
     },
 
-    findCountryByCca3(cioc: string) {
+    findCountryByCca3(alpha3Code: string) {
       Object.assign(
         this.singleCountry,
         this.countries.find((c: Country) => {
-          if (c.cioc == cioc) {
+          if (c.alpha3Code == alpha3Code) {
             return c;
           }
         })
@@ -89,7 +89,7 @@ export const useCountries = defineStore("countries", {
       if (this.singleCountry.borders?.length) {
         for (let c of this.singleCountry.borders) {
           let foundCountry = this.countries.find(
-            (co) => co.cioc == c || co.alpha3Code == c
+            (co) => co.alpha3Code == c || co.alpha3Code == c
           );
 
           if (foundCountry) {

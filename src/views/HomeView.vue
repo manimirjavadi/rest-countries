@@ -76,7 +76,7 @@ const searchCountry = async (name: string) => {
           :population="country.population"
           :region="country.region"
           :capital="country.capital"
-          :cioc="country.cioc"
+          :alpha3Code="country.alpha3Code"
         />
       </div>
     </div>

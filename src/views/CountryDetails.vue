@@ -14,7 +14,7 @@ onMounted(async () => {
 });
 
 watchEffect(async () => {
-  countriesHandler.findCountryByCca3(route.params.cioc.toString());
+  countriesHandler.findCountryByCca3(route.params.alpha3Code.toString());
   borders.value = countriesHandler.getBorders();
 });
 </script>
@@ -109,7 +109,7 @@ watchEffect(async () => {
           <CRButton
             v-for="border in borders"
             :key="border.name"
-            :to="`/${border.name}/${border.cioc}`"
+            :to="`/${border.name}/${border.alpha3Code}`"
           >
             <span v-if="border.name">
               {{ border.name.replace(/ *\([^)]*\) */g, "") }}
