@@ -15,7 +15,7 @@ import ThemeToggler from "../utils/ThemeToggler.vue";
 
 <style scoped>
 .header {
-  @apply w-full h-20 shadow-md bg-lightBg dark:bg-darkElement sticky top-0;
+  @apply w-full h-20 shadow-md bg-lightBg dark:bg-darkElement sticky top-0 z-50;
 }
 
 .header__container {
