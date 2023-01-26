@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import CRButton from "@/components/UI/CRButton.vue";
 import CRCard from "@/components/UI/CRCard.vue";
 import CRDropdown from "@/components/UI/CRDropdown.vue";
 import CRInput from "@/components/UI/CRInput.vue";
