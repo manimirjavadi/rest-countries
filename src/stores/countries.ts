@@ -75,7 +75,6 @@ export const useCountries = defineStore("countries", {
 
     getBorders() {
       let borders = [];
-      console.log(this.singleCountry.borders);
 
       if (this.singleCountry.borders?.length) {
         for (let c of this.singleCountry.borders) {
