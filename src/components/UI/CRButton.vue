@@ -22,9 +22,9 @@ const handleClick = () => {
 </script>
 
 <template>
-  <button @click="handleClick">
+  <button class="cr_input" @click="handleClick">
     <SvgIcon type="mdi" :path="backArrow" v-if="backBtn" />
-    <div :class="backBtn ? 'text-2xl' : 'text-sm'">
+    <div :class="backBtn ? 'text-lg' : 'text-sm'">
       <slot />
     </div>
   </button>
@@ -32,7 +32,7 @@ const handleClick = () => {
 
 <style scoped>
 button {
-  @apply w-[150px] bg-lightBg text-lightText dark:bg-darkElement dark:text-darkText whitespace-nowrap px-4 shadow-3xl py-2 rounded-sm scale-100 duration-100 flex gap-2 justify-center items-center overflow-hidden;
+  @apply w-[150px] scale-100 duration-100 flex gap-2 justify-center items-center overflow-hidden;
 }
 
 button:hover {

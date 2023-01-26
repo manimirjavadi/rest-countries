@@ -22,3 +22,7 @@ body {
 .rp {
   @apply px-4 md:px-8;
 }
+
+.cr_input {
+  @apply h-[40px] bg-lightBg text-lightText dark:bg-darkElement dark:text-darkText whitespace-nowrap px-4 shadow-3xl rounded-sm;
+}
