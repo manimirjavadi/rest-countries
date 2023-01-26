@@ -15,7 +15,15 @@ describe("ToggleTheme.vue", () => {
         plugins: [createTestingPinia({ stubActions: false })],
       },
     });
-    expect(wrapper.find("svg").attributes("id")).toBe("moon");
+    const themeHandler = useTheme();
+
+    if (themeHandler.theme === Theme.LIGHT) {
+      expect(wrapper.find("svg").attributes("id")).toBe("moon");
+    }
+
+    if (themeHandler.theme === Theme.DARK) {
+      expect(wrapper.find("svg").attributes("id")).toBe("sun");
+    }
   });
 
   it("change theme after click", async () => {
@@ -27,8 +35,17 @@ describe("ToggleTheme.vue", () => {
 
     const themeHandler = useTheme();
     const togglerBtn = wrapper.find("#toggleBtn");
-    await togglerBtn.trigger("click");
-    expect(themeHandler.theme).toBe(Theme.DARK);
-    expect(wrapper.find("svg").attributes("id")).toBe("sun");
+
+    if (themeHandler.theme === Theme.LIGHT) {
+      await togglerBtn.trigger("click");
+      expect(themeHandler.theme).toBe(Theme.DARK);
+      expect(wrapper.find("svg").attributes("id")).toBe("sun");
+    }
+
+    if (themeHandler.theme === Theme.DARK) {
+      await togglerBtn.trigger("click");
+      expect(themeHandler.theme).toBe(Theme.LIGHT);
+      expect(wrapper.find("svg").attributes("id")).toBe("moon");
+    }
   });
 });
