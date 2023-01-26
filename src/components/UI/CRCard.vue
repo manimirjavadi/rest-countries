@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref } from "vue";
+
 defineProps<{
   image?: string;
   name?: string;
@@ -6,17 +8,20 @@ defineProps<{
   region?: string;
   capital?: string[];
 }>();
+
+const squareFlags = ref(["Switzerland", "Nepal"]);
 </script>
 
 <template>
   <div class="card">
     <div class="image">
       <img
+        v-if="name"
         :title="name"
         :alt="name"
         loading="lazy"
         :src="image"
-        :class="name === 'Nepal' ? 'object-contain' : 'object-cover'"
+        :class="squareFlags.includes(name) ? 'object-contain' : 'object-cover'"
       />
     </div>
     <div class="content">
