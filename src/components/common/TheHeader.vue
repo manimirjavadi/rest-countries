@@ -7,10 +7,12 @@ const router = useRouter();
 
 <template>
   <main class="header rp">
-    <div class="header__container" @click="() => router.push('/')">
-      <h1 class="title">
-        <slot />
-      </h1>
+    <div class="header__container">
+      <div @click="() => router.push('/')">
+        <h1 class="title">
+          <slot />
+        </h1>
+      </div>
       <ThemeToggler />
     </div>
   </main>

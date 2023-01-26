@@ -111,7 +111,9 @@ watchEffect(async () => {
             :key="border.name"
             :to="`/${border.name}/${border.cioc}`"
           >
-            {{ border.name }}
+            <span v-if="border.name">
+              {{ border.name.replace(/ *\([^)]*\) */g, "") }}
+            </span>
           </CRButton>
         </div>
       </div>

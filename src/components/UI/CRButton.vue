@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import SvgIcon from "@jamescoyle/vue-icon";
 import { mdiArrowLeft as backArrow } from "@mdi/js";
-import { useRouter, type RouteLocationRaw } from "vue-router";
+import { useRouter } from "vue-router";
 
 const router = useRouter();
 
