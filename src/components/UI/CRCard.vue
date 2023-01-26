@@ -1,24 +1,44 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps<{
+  image?: string;
+  name?: string;
+  population?: number;
+  region?: string;
+  capital?: string[];
+}>();
+</script>
 
 <template>
   <div class="card">
     <div class="image">
-      <img alt="germany" loading="lazy" src="https://flagcdn.com/mu.svg" />
+      <img
+        :title="name"
+        :alt="name"
+        loading="lazy"
+        :src="image"
+        :class="name === 'Nepal' ? 'object-contain' : 'object-cover'"
+      />
     </div>
     <div class="content">
-      <h1>Germany</h1>
+      <h1
+        v-if="name"
+        :title="name"
+        :class="name?.length > 27 ? 'text-sm' : 'text-lg'"
+      >
+        {{ name }}
+      </h1>
       <div class="list">
         <div class="item">
           <span class="item__title">Population: </span>
-          <span>Value</span>
+          <span>{{ population?.toLocaleString() }}</span>
         </div>
         <div class="item">
           <span class="item__title">Region: </span>
-          <span>Value</span>
+          <span>{{ region }}</span>
         </div>
         <div class="item">
           <span class="item__title">Capital: </span>
-          <span>Value</span>
+          <span v-if="capital?.length">{{ capital[0] }}</span>
         </div>
       </div>
     </div>
@@ -27,11 +47,11 @@
 
 <style scoped>
 .card {
-  @apply bg-lightBg text-lightText dark:bg-darkElement dark:text-darkText whitespace-nowrap shadow-3xl rounded-sm;
+  @apply bg-lightBg text-lightText dark:bg-darkElement dark:text-darkText whitespace-nowrap shadow-3xl rounded-sm pb-1;
 }
 
 .image img {
-  @apply aspect-video object-cover;
+  @apply aspect-video;
 }
 
 .card:hover {
@@ -43,7 +63,7 @@
 }
 
 .content h1 {
-  @apply text-lg font-semibold py-4;
+  @apply h-[80px] w-full overflow-x-hidden font-semibold py-4;
 }
 
 .list {
