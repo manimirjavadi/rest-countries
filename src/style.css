@@ -1,20 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
-    @apply font-sans;
+  @apply font-sans;
 }
 
 body {
-    @apply bg-lightBg text-lightText dark:bg-darkBg dark:text-darkText transition-colors duration-300 ease-in-out;
+  @apply bg-lightBg text-lightText dark:bg-darkBg dark:text-darkText transition-colors duration-300 ease-in-out;
 }
 
 .title {
-    @apply font-bold text-[28px];
+  @apply font-bold text-[28px];
+}
+
+.mainContainer {
+  @apply max-w-7xl mx-auto;
 }
 
 .rp {
-    @apply px-4 md:px-8;
+  @apply px-4 md:px-8;
 }

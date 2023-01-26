@@ -7,6 +7,9 @@ module.exports = {
       sans: ['"Nunito Sans"', "sans-serif"],
     },
     extend: {
+      boxShadow: {
+        "3xl": "0px 0px 11px -2px rgba(0, 0, 0, 0.41);",
+      },
       colors: {
         darkBg: "#202c37",
         darkElement: "#2B3945",
