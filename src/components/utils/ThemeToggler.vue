@@ -6,18 +6,18 @@ import {
   mdiWhiteBalanceSunny as sun,
 } from "@mdi/js";
 import { storeToRefs } from "pinia";
-import { watch } from "vue";
+import { watchEffect } from "vue";
 
 const themeHandler = useTheme();
 
 const themeRef = storeToRefs(themeHandler);
 
-watch(themeRef.theme, () => {
-  if (themeRef.theme.value === Theme.LIGHT) {
+watchEffect(() => {
+  if (themeRef.theme.value === Theme.LIGHT.toString()) {
     document.documentElement.classList.remove("dark");
   }
 
-  if (themeRef.theme.value === Theme.DARK) {
+  if (themeRef.theme.value === Theme.DARK.toString()) {
     document.documentElement.classList.add("dark");
   }
 });
@@ -28,7 +28,7 @@ watch(themeRef.theme, () => {
     <button id="toggleBtn" @click="themeHandler.toggleTheme">
       <SvgIcon
         id="moon"
-        v-if="!themeHandler.theme"
+        v-if="themeHandler.theme === '0'"
         class="icon"
         type="mdi"
         :path="moon"
