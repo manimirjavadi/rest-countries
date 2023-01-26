@@ -4,6 +4,9 @@ import CountryDetails from "@/views/CountryDetails.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
+  scrollBehavior(to, from, savedPosition) {
+    return { top: 0 };
+  },
   routes: [
     {
       path: "/",
@@ -11,7 +14,7 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: "/:name",
+      path: "/:name/:cioc",
       name: "country",
       component: CountryDetails,
     },

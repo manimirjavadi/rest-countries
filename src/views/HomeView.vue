@@ -36,16 +36,14 @@ const searchCountry = async (name: string) => {
     </div>
 
     <div class="countriesList">
-      <div
-        v-for="country in countriesHandler.countries"
-        :key="country.name?.common"
-      >
+      <div v-for="country in countriesHandler.countries" :key="country.name">
         <CRCard
           :image="country.flags?.svg"
-          :name="country.name?.common"
+          :name="country.name"
           :population="country.population"
           :region="country.region"
           :capital="country.capital"
+          :cioc="country.cioc"
         />
       </div>
     </div>

@@ -6,6 +6,7 @@ import { useLoading } from "./loading";
 export const useCountries = defineStore("countries", {
   state: () => {
     return {
+      singleCountry: {} as Country,
       countries: [] as Country[],
     };
   },
@@ -59,6 +60,36 @@ export const useCountries = defineStore("countries", {
           alert.throwAlert("error", e.response.data.message);
           loadingHandler.stopLoading();
         });
+    },
+
+    findCountryByCca3(cioc: string) {
+      Object.assign(
+        this.singleCountry,
+        this.countries.find((c: Country) => {
+          if (c.cioc == cioc) {
+            return c;
+          }
+        })
+      );
+    },
+
+    getBorders() {
+      let borders = [];
+      console.log(this.singleCountry.borders);
+
+      if (this.singleCountry.borders?.length) {
+        for (let c of this.singleCountry.borders) {
+          let foundCountry = this.countries.find(
+            (co) => co.cioc == c || co.alpha3Code == c
+          );
+
+          if (foundCountry) {
+            borders.push(foundCountry);
+          }
+        }
+      }
+
+      return borders;
     },
   },
 });

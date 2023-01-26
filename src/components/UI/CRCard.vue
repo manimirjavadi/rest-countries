@@ -1,19 +1,22 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 
 defineProps<{
   image?: string;
   name?: string;
   population?: number;
   region?: string;
-  capital?: string[];
+  capital?: string;
+  cioc?: string;
 }>();
 
 const squareFlags = ref(["Switzerland", "Nepal"]);
+const router = useRouter();
 </script>
 
 <template>
-  <div class="card">
+  <div class="card" @click="() => router.push(`/${name}/${cioc}`)">
     <div class="image">
       <img
         v-if="name"
@@ -43,7 +46,7 @@ const squareFlags = ref(["Switzerland", "Nepal"]);
         </div>
         <div class="item">
           <span class="item__title">Capital: </span>
-          <span v-if="capital?.length">{{ capital[0] }}</span>
+          <span v-if="capital?.length">{{ capital }}</span>
         </div>
       </div>
     </div>

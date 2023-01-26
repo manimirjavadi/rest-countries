@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import SvgIcon from "@jamescoyle/vue-icon";
 import { mdiArrowLeft as backArrow } from "@mdi/js";
-import { useRouter } from "vue-router";
+import { useRouter, type RouteLocationRaw } from "vue-router";
 
 const router = useRouter();
 
 const props = defineProps<{
   backBtn?: boolean;
   countryName?: string;
+  to?: string;
 }>();
 
 const handleClick = () => {
@@ -15,8 +16,8 @@ const handleClick = () => {
     router.go(-1);
   }
 
-  if (props.countryName) {
-    router.push(`/${props.countryName}`);
+  if (props.to) {
+    router.push(props.to);
   }
 };
 </script>
@@ -32,7 +33,7 @@ const handleClick = () => {
 
 <style scoped>
 button {
-  @apply w-[150px] scale-100 duration-100 flex gap-2 justify-center items-center overflow-hidden;
+  @apply scale-100 duration-100 flex gap-2 justify-center items-center overflow-hidden;
 }
 
 button:hover {
