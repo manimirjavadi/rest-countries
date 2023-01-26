@@ -24,6 +24,8 @@ export const useTheme = defineStore("theme", {
           break;
 
         default:
+          this.theme = Theme.DARK.toString();
+          localStorage.setItem("theme", this.theme.toString());
           break;
       }
     },
