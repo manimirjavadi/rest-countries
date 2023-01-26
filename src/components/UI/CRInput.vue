@@ -24,7 +24,7 @@ const searchText = ref("");
 
 <style scoped>
 input {
-  @apply w-full md:w-[450px] shadow-3xl text-sm pl-12;
+  @apply w-full md:w-[450px] h-[50px] shadow-3xl text-sm pl-12;
 }
 
 input:focus {
