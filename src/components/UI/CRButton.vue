@@ -9,6 +9,7 @@ const props = defineProps<{
   backBtn?: boolean;
   countryName?: string;
   to?: string;
+  active?: boolean;
 }>();
 
 const handleClick = () => {

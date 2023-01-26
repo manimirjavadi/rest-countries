@@ -3,15 +3,23 @@ import { defineStore } from "pinia";
 import type { Country } from "../interfaces/Country";
 import { useAlert } from "./alert";
 import { useLoading } from "./loading";
+
+export enum sortEnum {
+  POPULATION = 0,
+  COUNTRYNAME = 1,
+}
+
 export const useCountries = defineStore("countries", {
   state: () => {
     return {
       singleCountry: {} as Country,
       countries: [] as Country[],
+      sortType: sortEnum.COUNTRYNAME,
     };
   },
   actions: {
     fetchCountries() {
+      this.sortType = sortEnum.COUNTRYNAME;
       const loadingHandler = useLoading();
       const alert = useAlert();
 
@@ -29,6 +37,7 @@ export const useCountries = defineStore("countries", {
     },
 
     filterByRegion(name: String) {
+      this.sortType = sortEnum.COUNTRYNAME;
       const loadingHandler = useLoading();
       const alert = useAlert();
 
@@ -46,6 +55,7 @@ export const useCountries = defineStore("countries", {
     },
 
     searchByName(name: String) {
+      this.sortType = sortEnum.COUNTRYNAME;
       const loadingHandler = useLoading();
       const alert = useAlert();
 
@@ -89,6 +99,12 @@ export const useCountries = defineStore("countries", {
       }
 
       return borders;
+    },
+
+    sort() {
+      this.countries.sort((a, b) => {
+        return b.population - a.population;
+      });
     },
   },
 });

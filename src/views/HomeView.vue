@@ -2,7 +2,8 @@
 import CRCard from "@/components/UI/CRCard.vue";
 import CRDropdown from "@/components/UI/CRDropdown.vue";
 import CRInput from "@/components/UI/CRInput.vue";
-import { useCountries } from "@/stores/countries";
+import CRToggleButton from "@/components/UI/CRToggleButton.vue";
+import { useCountries, sortEnum } from "@/stores/countries";
 import { onMounted } from "vue";
 
 const countriesHandler = useCountries();
@@ -30,6 +31,38 @@ const searchCountry = async (name: string) => {
 
 <template>
   <main class="mainContainer rp">
+    <div class="sortContainer">
+      <CRToggleButton
+        @click="
+          () => {
+            countriesHandler.sortType = sortEnum.POPULATION;
+            countriesHandler.sort();
+          }
+        "
+        type="population"
+        :class="
+          countriesHandler.sortType == sortEnum.POPULATION
+            ? 'active'
+            : 'deactive'
+        "
+        >Sort By Population</CRToggleButton
+      >
+      <CRToggleButton
+        @click="
+          async () => {
+            countriesHandler.sortType = sortEnum.COUNTRYNAME;
+            await countriesHandler.fetchCountries();
+          }
+        "
+        type="alphabet"
+        :class="
+          countriesHandler.sortType == sortEnum.COUNTRYNAME
+            ? 'active'
+            : 'deactive'
+        "
+        >Sort By Alphabet</CRToggleButton
+      >
+    </div>
     <div class="headerContainer">
       <CRInput @submit-search="searchCountry" />
       <CRDropdown @region-changed="filterRegion" />
@@ -54,6 +87,11 @@ const searchCountry = async (name: string) => {
 .headerContainer {
   @apply md:flex md:justify-between md:items-center mt-4 md:mt-0;
 }
+
+.sortContainer {
+  @apply grid grid-cols-2 gap-4 pt-4;
+}
+
 .countriesList {
   @apply w-full mx-auto mb-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4;
 }

@@ -40,15 +40,11 @@ const changeRegion = (region: string) => {
       {{ dropDownValue === "All" ? "Filter By Region" : dropDownValue }}
     </button>
     <transition name="dropdown">
-      <div class="z-50" v-show="dropDown">
-        <div
-          class="absolute mt-2 w-full bg-lightBg shadow-3xl dark:bg-darkElement rounded-md py-2 px-4"
-          id="dropdown-menu"
-        >
+      <div v-show="dropDown">
+        <div class="dropdownContainer" id="dropdown-menu">
           <a
             v-for="region in regions"
             :key="region"
-            href="#"
             class="block px-4 py-1"
             @click="changeRegion(region)"
           >
@@ -71,5 +67,9 @@ button {
 
 .iconContainer {
   @apply absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer;
+}
+
+.dropdownContainer {
+  @apply absolute mt-2 w-full bg-lightBg shadow-3xl dark:bg-darkElement rounded-md py-2 px-4 z-50 cursor-pointer;
 }
 </style>
