@@ -1,31 +1,44 @@
 <script setup lang="ts">
-import { watch } from "vue";
 import { RouterView } from "vue-router";
-import { useTheme, Theme } from "./stores/theme";
-import View from "./components/View.vue";
-import { storeToRefs } from "pinia";
 
-const themeHandler = useTheme();
-const themeRef = storeToRefs(themeHandler);
+import TheHeader from "./components/common/TheHeader.vue";
+import CRLoading from "./components/UI/CRLoading.vue";
+import CRAlert from "./components/UI/CRAlert.vue";
+import { useAlert } from "./stores/alert";
+import { useLoading } from "./stores/loading";
 
-watch(themeRef.theme, () => {
-  if (themeRef.theme.value === Theme.LIGHT) {
-    document.documentElement.classList.remove("dark");
-  }
-
-  if (themeRef.theme.value === Theme.DARK) {
-    document.documentElement.classList.add("dark");
-  }
-});
+const loadingHandler = useLoading();
+const alert = useAlert();
 </script>
 
 <template>
+  <CRLoading v-if="loadingHandler.status" />
+
   <main>
-    <header></header>
-    <View element="div" class="underline"> Hello from view </View>
-    <RouterView />
-    <button @click="themeHandler.toggleTheme()">Toggle theme</button>
+    <TheHeader> Where in the world? </TheHeader>
+    <div>
+      <transition name="slide-fade">
+        <CRAlert v-if="alert.showAlert" />
+      </transition>
+    </div>
+    <transition name="slide-fade">
+      <RouterView />
+    </transition>
   </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+.slide-fade-enter-active {
+  transition: all 0.2s ease-in-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.6s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(-20px);
+  opacity: 0;
+}
+</style>
