@@ -16,6 +16,14 @@ Then cd into the folder and install node packages:
 npm install
 ```
 
+### Fill the .env file
+
+Make a copy of `.env.example` and rename it to `.env`. Now fill it with the rest endpoint v2:
+
+```
+VITE_BASE_URL=https://restcountries.com/v2
+```
+
 ### Compile and Hot-Reload for Development
 
 ```sh
