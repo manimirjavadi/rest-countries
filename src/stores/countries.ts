@@ -103,6 +103,7 @@ export const useCountries = defineStore("countries", {
 
     sort() {
       this.countries.sort((a, b) => {
+        /** @ts-ignore */
         return b.population - a.population;
       });
     },
